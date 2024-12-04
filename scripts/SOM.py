@@ -22,7 +22,7 @@ colorbar()
 markers = ['o','s']
 colors = ['r','g']
 fraud_cordinates = set()
-threshold = np.percentile(u_matrix,89)
+threshold = np.percentile(u_matrix,95)
 for i,val in enumerate(x_scaled):
     w = som.winner(val)
     is_outlier = u_matrix[w[1], w[0]] > threshold  # Check high distance in transposed matrix
@@ -44,6 +44,8 @@ fraud_data = tuple(mappings[cord] for cord in fraud_cordinates)
 frauds_scaled = np.concatenate(fraud_data,axis=0)
 fraud_details = sc.inverse_transform(frauds_scaled)
 print(fraud_details)
+
+
 
 
 
